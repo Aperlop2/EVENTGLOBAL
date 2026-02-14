@@ -28,5 +28,41 @@ export const routes: Routes = [
     data: {
       title: 'Register Page'
     }
-  }
+  },
+  {
+    path: 'inicio',
+    loadComponent: () => import ('./inicio/inicio.component').then (m => m.InicioComponent),
+    data:{
+      title: 'inicio'
+    }
+  },
+  {
+    path: 'perfil',
+    loadComponent: () => import('./perfil/perfil.component').then(m => m. PerfilComponent),
+    data:{
+      title:'Perfil Page'
+    }
+  },
+  {
+    path: 'eventos-destacados',
+    loadComponent: () => import('./perfil/eventos-destacados/eventos-destacados.component').then(m => m.EventosDestacadosComponent),
+    data:{
+      title:'Evenyos-destacados Page'
+    }
+  },
+  {
+    path: 'historial-eventos',
+    loadComponent: () => import('./perfil/historial-eventos/historial-eventos.component').then(m => m.HistorialEventosComponent),
+    data:{
+      title:'Historial-eventos Page'
+    }
+  },
+  {
+    path: 'ubicacion',
+    loadComponent: () => import('./perfil/ubicacion/ubicacion.component').then(m => m.UbicacionComponent),
+    data:{
+      title:'Ubicacion Page'
+    }
+  },
+
 ];

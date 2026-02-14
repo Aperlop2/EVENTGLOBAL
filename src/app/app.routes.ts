@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import { authGuard } from './guards/auth.guard';
+import { EventosDestacadosComponent } from './views/pages/perfil/eventos-destacados/eventos-destacados.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   {
@@ -14,10 +16,6 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
-      },
       {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
@@ -82,6 +80,45 @@ export const routes: Routes = [
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'inicio',
+    loadComponent: () => import('./views/pages/inicio/inicio.component').then(m => m. InicioComponent),
+    data:{
+      title:'Inicio Page'
+    }
+  },
+  {
+    path: 'perfil',
+    canActivate:[authGuard],
+    loadComponent: () => import('./views/pages/perfil/perfil.component').then(m => m. PerfilComponent),
+    data:{
+      title:'Perfil Page'
+    }
+  },
+  {
+    path: 'eventos-destacados',
+    canActivate: [authGuard],
+    component: EventosDestacadosComponent,
+    data: {
+      title: 'Eventos Destacados'
+    }
+  },
+  {
+    path: 'historial-eventos',
+    canActivate:[authGuard],
+    loadComponent: () => import('./views/pages/perfil/historial-eventos/historial-eventos.component').then(m => m.HistorialEventosComponent),
+    data:{
+      title:'Historial-eventos Page'
+    }
+  },
+  {
+    path: 'ubicacion',
+    canActivate:[authGuard],
+    loadComponent: () => import('./views/pages/perfil/ubicacion/ubicacion.component').then(m => m.UbicacionComponent),
+    data:{
+      title:'Ubicacion Page'
     }
   },
   { path: '**', redirectTo: 'dashboard' }

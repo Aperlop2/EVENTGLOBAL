@@ -4,15 +4,17 @@ import { Title } from '@angular/platform-browser';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
+import { CommonModule } from '@angular/common';
+import { UbicacionComponent } from './views/pages/perfil/ubicacion/ubicacion.component';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet />',
   standalone: true,
-  imports: [RouterOutlet]
+  imports: [RouterOutlet, CommonModule, UbicacionComponent]
 })
 export class AppComponent implements OnInit {
-  title = 'CoreUI Angular Admin Template';
+  title = 'EVENTGLOBAL';
 
   constructor(
     private router: Router,
